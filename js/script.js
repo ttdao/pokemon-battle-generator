@@ -87,17 +87,13 @@ function getPkmnCallBack(response, pokemon) {
   pokemon.name = response.name
 }
 
-// function showPokemonName(pokemon){
-// $(".pokeball").attr("src","pokemon.name");
-// }
-// function showPokemonMove(pokemon){
-// $(".pokeball").attr("src","pokemon.move");
-// }
-function getPkmnImage(pokemon){
-  $(".pokeball").after('<img>' + pokemon.image + '</img>');
-  $(".pokeball").after('<h2>' + pokemon.name + '</h2>');
-  $(".pokeball").after('<p>' + pokemon.move + '</p>');
-} //work on this again. using .after
+function showPkmn(pokemon){
+  debugger;
+   $('.container').find('span').after('<p>' + pokemon.move + '</p>');
+  $('.container').find('span').after('<img src="' + pokemon.image + '">')
+  debugger;
+  $('.container').find('span').after('<h2>' + pokemon.name + '</h2>');
+  }
 
 function getPkmnMoves(pokemon) {
   $.get('http://pokeapi.co/api/v2/pokemon/' + pokemon.id, function(response) {
@@ -133,40 +129,41 @@ function moveCallBack(move, pokemon) {
     pokemon.move = response.name;
     pokemon.movePower = response.power || 0;
     pokemon.moveAccuracy = response.accuracy || 0;
-  compareStat(pokemon[0].movePower,pokemon[1].movePower);
-  compareStat(pokemon[0].moveAccuracy, pokemon[1].moveAccuracy);
+    showPkmn(pokemon);
+  // compareStat(pokemon[0].movePower,pokemon[1].movePower);
+  // compareStat(pokemon[0].moveAccuracy, pokemon[1].moveAccuracy);
    });
 }
 
 
 
-function compareStat(userOneStat, userTwoStat) {
-  var nameScore1 = 0;
-  var nameScore2 = 0;
-  if (userOneStat === userTwoStat) {
-    nameScore1++;
-    nameScore2++;
-  } else if (nameScore1 > nameScore2) {
-    nameScore1++;
-  } else {
-    nameScore2++;
-  }
-}
+// function compareStat(userOneStat, userTwoStat) {
+//   var nameScore1 = 0;
+//   var nameScore2 = 0;
+//   if (userOneStat === userTwoStat) {
+//     nameScore1++;
+//     nameScore2++;
+//   } else if (nameScore1 > nameScore2) {
+//     nameScore1++;
+//   } else {
+//     nameScore2++;
+//   }
+// }
 
 
- function results() {
-   var nameScore1 = 0;
-   var nameScore2 = 0;
-   while (nameScore1 || nameScore2 <= 2)
-   {
-     if (nameScore1 > nameScore2) {
-     var name1 = $('#user-input1').val();
-     $('.user-inputs').append('<h2>' + name1 + ' wins the bet!</h2>');
-   } else if (nameScore1 < nameScore2){
-     var name2 = $('#user-input2').val();
-     $('.user-inputs').append('<h2>' + name2 + ' wins the bet!</h2>');
-   } else {
-     alert("So close! Try again!");
-   } 
-   }
- }
+//  function results() {
+//    var nameScore1 = 0;
+//    var nameScore2 = 0;
+//    while (nameScore1 || nameScore2 <= 2)
+//    {
+//      if (nameScore1 > nameScore2) {
+//      var name1 = $('#user-input1').val();
+//      $('.user-inputs').append('<h2>' + name1 + ' wins the bet!</h2>');
+//    } else if (nameScore1 < nameScore2){
+//      var name2 = $('#user-input2').val();
+//      $('.user-inputs').append('<h2>' + name2 + ' wins the bet!</h2>');
+//    } else {
+//      alert("So close! Try again!");
+//    } 
+//    }
+//  }
