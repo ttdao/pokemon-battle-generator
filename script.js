@@ -86,7 +86,16 @@ function getPkmn(pokemon) {
 function getPkmnCallBack(response, pokemon) {
   pokemon.image = response.sprites.front_default
   pokemon.name = response.name
+  showPkmn(pokemon);
 }
+
+function showPkmn(pokemon){
+  debugger;
+  $('.container').find('span').after('<img src="' + pokemon.image + '">');
+  debugger;
+  $('.container').find('span').after('<h2>' + pokemon.name + '</h2>');
+  $('.container').find('span').after('<p>' + pokemon.move + '</p>');
+} 
 
 function getPkmnMoves(pokemon) {
   $.get('http://pokeapi.co/api/v2/pokemon/' + pokemon.id, function(response) {
